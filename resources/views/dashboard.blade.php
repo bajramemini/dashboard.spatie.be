@@ -6,8 +6,8 @@
 <div id="dashboard">
     <dashboard class="font-sans">
         <twitter :initial-tweets="{{ json_encode($initialTweets) }}" position="a1:a16"></twitter>
-        <team-member name="adriaan" avatar="{{ gravatar('adriaan@spatie.be') }}" birthday="1995-10-22" position="b1:b8"></team-member>
-        <team-member name="alex" avatar="{{ gravatar('alex@spatie.be') }}" birthday="1996-02-05" position="c1:c8"></team-member>
+        <team-member name="bajram" avatar="{{ gravatar('bajram@eminiarts.ch') }}" birthday="1992-05-06" position="b1:b8"></team-member>
+        <team-member name="enes" avatar="{{ gravatar('enes@eminiarts.ch') }}" birthday="1996-10-11" position="c1:c8"></team-member>
         <team-member name="brent" avatar="{{ gravatar('brent@spatie.be') }}" birthday="1994-07-30" position="b9:b16"></team-member>
         <team-member name="freek" avatar="{{ gravatar('freek@spatie.be') }}" birthday="1979-09-22" position="c9:c16"></team-member>
         <team-member name="rias" avatar="{{ gravatar('rias@spatie.be') }}" birthday="1992-05-25" position="a17:a24"></team-member>
@@ -19,7 +19,7 @@
         <tile-timer on="16:00" off="19:00">
             <trains position="a1:a24" max-trains="3"></trains>
         </tile-timer>
-        <time-weather position="e1:e6" date-format="ddd DD/MM" time-zone="Europe/Zurich" weather-city="St.Gallen"></time-weather>
+        <time-weather position="e1:e6" date-format="ddd DD/MM" time-zone="Europe/Zurich" weather-city="St. Gallen"></time-weather>
         <internet-connection position="e1:e6"></internet-connection>
         <statistics position="d1:d10"></statistics>
         <uptime position="d1:d10"></uptime>
