@@ -19,7 +19,7 @@
         <tile-timer on="16:00" off="19:00">
             <trains position="a1:a24" max-trains="3"></trains>
         </tile-timer>
-        <time-weather position="e1:e6" date-format="ddd DD/MM" time-zone="Europe/Brussels" weather-city="Antwerp"></time-weather>
+        <time-weather position="e1:e6" date-format="ddd DD/MM" time-zone="Europe/Zurich" weather-city="St.Gallen"></time-weather>
         <internet-connection position="e1:e6"></internet-connection>
         <statistics position="d1:d10"></statistics>
         <uptime position="d1:d10"></uptime>
