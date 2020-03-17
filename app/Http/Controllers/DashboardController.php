@@ -14,6 +14,8 @@ class DashboardController
             'environment' => app()->environment(),
             'initialTweets' => TweetHistory::all(),
             'openWeatherMapKey' => config('services.open_weather_map.key'),
+            'teamworkUrl' => config('services.teamwork.url'),
+            'teamworkToken' => config('services.teamwork.token'),
         ]);
     }
 }

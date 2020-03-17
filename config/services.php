@@ -55,6 +55,11 @@ return [
         'key' => env('OPEN_WEATHER_MAP_KEY'),
     ],
 
+    'teamwork' =>[
+        'url' => env('TEAMWORK_URL'),
+        'token' => env('TEAMWORK_TOKEN'),
+    ],
+
     'packagist' => [
         'vendor' => env('PACKAGIST_VENDOR'),
     ],

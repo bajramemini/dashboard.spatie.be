@@ -3,6 +3,7 @@ import './bootstrap.js';
 import Echo from 'laravel-echo';
 import Vue from 'vue';
 
+import Activity from './components/Activity';
 import Dashboard from './components/Dashboard';
 import Calendar from './components/Calendar';
 import Statistics from './components/Statistics';
@@ -19,6 +20,7 @@ new Vue({
     el: '#dashboard',
 
     components: {
+        Activity,
         Dashboard,
         Calendar,
         Statistics,
@@ -46,6 +48,6 @@ new Vue({
             config.wsPort = 6001;
         }
 
-        this.echo = new Echo(config);
+        //this.echo = new Echo(config);
     },
 });
