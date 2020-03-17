@@ -14,3 +14,5 @@ Route::group(['middleware' => AccessToken::class], function () {
 });
 
 Route::ohDearWebhooks('/oh-dear-webhooks');
+
+Route::get('/api/teamwork/activity', 'TeamworkApiController@activity');
