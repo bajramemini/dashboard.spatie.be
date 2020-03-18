@@ -12,10 +12,10 @@ Route::group(['middleware' => AccessToken::class], function () {
 
 Route::ohDearWebhooks('/oh-dear-webhooks');
 
-Route::get('/api/teamwork/milestones', 'TeamworkApiController@milestones');
 
+Route::get('/api/teamwork/activity', 'TeamworkApiController@activity');
 Route::group(['middleware' => ['cache']], function () {
-    Route::get('/api/teamwork/activity', 'TeamworkApiController@activity');
+    Route::get('/api/teamwork/milestones', 'TeamworkApiController@milestones');
     Route::get('/api/teamwork/milestone/{id}', 'TeamworkApiController@milestone');
     Route::get('/api/teamwork/projects', 'TeamworkApiController@projects');
     Route::get('/api/teamwork/project/{id}', 'TeamworkApiController@project');

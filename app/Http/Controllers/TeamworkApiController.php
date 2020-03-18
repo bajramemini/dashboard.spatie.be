@@ -22,6 +22,7 @@ class TeamworkApiController
     {
         $response = Http::withBasicAuth($this->token, 'X')->get($this->url . '/latestActivity.json');
 
+
         $activity = collect($response->json()['activity'])->map(function ($item, $key) {
             //return $item;
             return [
@@ -32,6 +33,7 @@ class TeamworkApiController
                 'project' => $item['project-name'],
                 'user' => $item['fromusername'],
                 'user_img' => $item['from-user-avatar-url'],
+                'created_at' => Carbon::parse($item['datetime'])->diffForHumans(),
             ];
         });
 

@@ -5,12 +5,12 @@
 @javascript(compact('pusherKey', 'clientConnectionPath', 'environment', 'openWeatherMapKey', 'teamworkToken', 'teamworkUrl'))
 <div id="dashboard">
     <dashboard class="font-sans">
-        <twitter :initial-tweets="{{ json_encode($initialTweets) }}" position="a1:a16"></twitter>
+        <activity position="a1:a24"></activity>
+        {{-- <twitter :initial-tweets="{{ json_encode($initialTweets) }}" position="a1:a16"></twitter> --}}
         <team-member name="bajram" avatar="{{ gravatar('bajram@eminiarts.ch') }}" birthday="1992-05-06" position="b1:b8"></team-member>
         <team-member name="enes" avatar="{{ gravatar('enes@eminiarts.ch') }}" birthday="1996-10-11" position="c1:c8"></team-member>
-        <activity position="b9:b24"></activity>
+        
         <team-member name="freek" avatar="{{ gravatar('freek@spatie.be') }}" birthday="1979-09-22" position="c9:c16"></team-member>
-        <team-member name="rias" avatar="{{ gravatar('rias@spatie.be') }}" birthday="1992-05-25" position="a17:a24"></team-member>
         <team-member name="sebastian" display-name="seb" avatar="{{ gravatar('sebastian@spatie.be') }}" birthday="1992-02-01" position="c17:c24"></team-member>
         <team-member name="jef" avatar="{{ gravatar('jef@spatie.be') }}" birthday="1975-03-28" position="d11:d13"></team-member>
         <team-member name="wouter" avatar="{{ gravatar('wouter@spatie.be') }}" birthday="1991-03-15" position="d14:d16"></team-member>
