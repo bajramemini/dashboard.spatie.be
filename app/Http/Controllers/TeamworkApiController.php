@@ -5,17 +5,36 @@ use Illuminate\Support\Facades\Http;
 
 class TeamworkApiController
 {
+    public $token;
+    public $url;
+
+    public function __construct()
+    {
+        $this->url = config('services.teamwork.url');
+        $this->token = config('services.teamwork.token');
+    }
+
     /**
      * @return mixed
      */
     public function activity()
     {
-        $url   = config('services.teamwork.url');
-        $token = config('services.teamwork.token');
+        $response = Http::withBasicAuth($this->token, 'X')->get($this->url . '/latestActivity.json');
 
-        $response = Http::withBasicAuth($token, 'X')->get($url . '/latestActivity.json');
+        $activity = collect($response->json()['activity'])->map(function ($item, $key) {
+            //return $item;
+            return [
+                'id' => $item['id'],
+                'type' => $item['type'],
+                'activity' => $item['activitytype'],
+                'description' => $item['description'],
+                'project' => $item['project-name'],
+                'user' => $item['fromusername'],
+                'user_img' => $item['from-user-avatar-url'],
+            ];
+        });
 
-        return $response->json();
+        return $activity;
     }
 
     /**
@@ -24,10 +43,7 @@ class TeamworkApiController
      */
     public function boardColumn($id)
     {
-        $url   = config('services.teamwork.url');
-        $token = config('services.teamwork.token');
-
-        $response = Http::withBasicAuth($token, 'X')->get($url . '/boards/columns/' . $id . '/cards.json/');
+        $response = Http::withBasicAuth($this->token, 'X')->get($this->url . '/boards/columns/' . $id . '/cards.json/');
 
         return $response->json();
     }
@@ -38,10 +54,7 @@ class TeamworkApiController
      */
     public function milestone($id)
     {
-        $url   = config('services.teamwork.url');
-        $token = config('services.teamwork.token');
-
-        $response = Http::withBasicAuth($token, 'X')->get($url . '/milestone/' . $id . '.json');
+        $response = Http::withBasicAuth($this->token, 'X')->get($this->url . '/milestone/' . $id . '.json');
 
         return $response->json();
     }
@@ -51,10 +64,7 @@ class TeamworkApiController
      */
     public function milestones()
     {
-        $url   = config('services.teamwork.url');
-        $token = config('services.teamwork.token');
-
-        $response = Http::withBasicAuth($token, 'X')->get($url . '/milestones.json');
+        $response = Http::withBasicAuth($this->token, 'X')->get($this->url . '/milestones.json');
 
         return $response->json();
     }
@@ -65,10 +75,7 @@ class TeamworkApiController
      */
     public function project($id)
     {
-        $url   = config('services.teamwork.url');
-        $token = config('services.teamwork.token');
-
-        $response = Http::withBasicAuth($token, 'X')->get($url . '/projects/' . $id . '.json');
+        $response = Http::withBasicAuth($this->token, 'X')->get($this->url . '/projects/' . $id . '.json');
 
         return $response->json();
     }
@@ -79,11 +86,8 @@ class TeamworkApiController
      */
     public function projectBoard($id)
     {
-
-        $url   = config('services.teamwork.url');
-        $token = config('services.teamwork.token');
-
-        $response = Http::withBasicAuth($token, 'X')->get($url . '/projects/' . $id . '/boards/columns.json');
+        // Projekte - 353552
+        $response = Http::withBasicAuth($this->token, 'X')->get($this->url . '/projects/' . $id . '/boards/columns.json');
 
         return $response->json();
     }
@@ -93,45 +97,8 @@ class TeamworkApiController
      */
     public function projects()
     {
-        $url   = config('services.teamwork.url');
-        $token = config('services.teamwork.token');
-
-        $response = Http::withBasicAuth($token, 'X')->get($url . '/projects.json');
+        $response = Http::withBasicAuth($this->token, 'X')->get($this->url . '/projects.json');
 
         return $response->json();
-    }
-
-    /**
-     * @param $slug
-     * @return mixed
-     */
-    public function projekteBoard($slug)
-    {
-        $url   = config('services.teamwork.url');
-        $token = config('services.teamwork.token');
-
-        $response = Http::withBasicAuth($token, 'X')->get($url . '/boards/columns/109510/cards.json/');
-
-        return $response->json();
-
-    }
-
-    /**
-     * @return mixed
-     */
-    public function projekteWichtig()
-    {
-        // Wichtig 109510
-        // Aufgaben 109508
-        // Erledigt 109559
-        // Demnächst 111944
-        //
-        $url   = config('services.teamwork.url');
-        $token = config('services.teamwork.token');
-
-        $response = Http::withBasicAuth($token, 'X')->get($url . '/boards/columns/109510/cards.json/');
-
-        return $response->json();
-
     }
 }
