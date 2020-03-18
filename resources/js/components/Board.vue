@@ -11,9 +11,11 @@
                                 {{ task.name }}
                             </span>
 
-                            <small class="flex justify-between mt-2" v-for="user in task.users">
+                            <small class="flex justify-between mt-2" >
                                 <span class="">{{ task.due_date }}</span>
-                                <img :src="user.avatarUrl" alt class="w-4 h-4 rounded-full" />
+                                <div class="flex">
+                                    <img :src="user.avatarUrl" alt class="w-4 h-4 rounded-full ml-2" v-for="user in task.users" />
+                                </div>
                             </small>
                         </li>
                     </div>

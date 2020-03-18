@@ -1,17 +1,24 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Http;
 
 class TeamworkApiController
 {
+    /**
+     * @var mixed
+     */
     public $token;
+
+    /**
+     * @var mixed
+     */
     public $url;
 
     public function __construct()
     {
-        $this->url = config('services.teamwork.url');
+        $this->url   = config('services.teamwork.url');
         $this->token = config('services.teamwork.token');
     }
 
@@ -22,18 +29,17 @@ class TeamworkApiController
     {
         $response = Http::withBasicAuth($this->token, 'X')->get($this->url . '/latestActivity.json');
 
-
         $activity = collect($response->json()['activity'])->map(function ($item, $key) {
             //return $item;
             return [
-                'id' => $item['id'],
-                'type' => $item['type'],
-                'activity' => $item['activitytype'],
+                'id'          => $item['id'],
+                'type'        => $item['type'],
+                'activity'    => $item['activitytype'],
                 'description' => $item['description'],
-                'project' => $item['project-name'],
-                'user' => $item['fromusername'],
-                'user_img' => $item['from-user-avatar-url'],
-                'created_at' => Carbon::parse($item['datetime'])->diffForHumans(),
+                'project'     => $item['project-name'],
+                'user'        => $item['fromusername'],
+                'user_img'    => $item['from-user-avatar-url'],
+                'created_at'  => Carbon::parse($item['datetime'])->diffForHumans(),
             ];
         });
 
@@ -71,11 +77,11 @@ class TeamworkApiController
 
         $activity = collect($response->json()['milestones'])->map(function ($item, $key) {
             return [
-                'id' => $item['id'],
-                'title' => $item['title'],
+                'id'       => $item['id'],
+                'title'    => $item['title'],
                 'deadline' => Carbon::parse($item['deadline'])->format('d.m.Y'),
-                'past' => Carbon::parse($item['deadline'])->isPast(),
-                'project' => $item['project-name'],
+                'past'     => Carbon::parse($item['deadline'])->addDay()->isPast(),
+                'project'  => $item['project-name'],
             ];
         });
 
