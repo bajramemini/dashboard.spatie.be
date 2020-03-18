@@ -13,9 +13,9 @@
         <board position="c1:c24" board="wichtig"></board>
         <milestones position="d1:d8"></milestones>
 
-        <tile-timer on="16:00" off="19:00">
+        {{-- <tile-timer on="16:00" off="19:00">
             <trains position="a1:a24" max-trains="3"></trains>
-        </tile-timer>
+        </tile-timer> --}}
         <time-weather position="e1:e6" date-format="ddd DD/MM" time-zone="Europe/Zurich" weather-city="St. Gallen"></time-weather>
 
         <team-member name="bajram" avatar="{{ gravatar('bajram@eminiarts.ch') }}" birthday="1992-05-06" position="e7:e9"></team-member>
