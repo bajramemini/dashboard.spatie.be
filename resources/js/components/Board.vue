@@ -1,7 +1,7 @@
 <template>
     <tile :position="position">
         <div class>
-            <h2>{{ this.board }}</h2>
+            <h2>{{ title(this.board) }}</h2>
             <ul class>
                 <li v-for="task in tasks">
                     <div class="my-2 text-sm">
@@ -53,6 +53,17 @@ export default {
             axios.get('/api/teamwork/projekte/board/' + this.board).then(response => {
                 this.tasks = response.data;
             });
+        },
+
+        title() {
+            var item = this.board;
+
+            return item
+                .split('_')
+                .map(function(item) {
+                    return item.charAt(0).toUpperCase() + item.substring(1);
+                })
+                .join(' ');
         },
 
         getEventHandlers() {
