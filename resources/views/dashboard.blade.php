@@ -15,7 +15,7 @@
         {{-- <tile-timer on="16:00" off="19:00">
             <trains position="a1:a24" max-trains="3"></trains>
         </tile-timer> --}}
-        <time-weather position="e1:e6" date-format="ddd DD/MM" time-zone="Europe/Zurich" weather-city="St. Gallen"></time-weather>
+        <time-weather position="e1:e6" date-format="ddd DD.MM" time-zone="Europe/Zurich" weather-city="Sankt Gallen"></time-weather>
         <milestones position="e7:e24"></milestones>
         
         {{-- <team-member name="bajram" avatar="{{ gravatar('bajram@eminiarts.ch') }}" birthday="1992-05-06" position="e7:e9"></team-member>
