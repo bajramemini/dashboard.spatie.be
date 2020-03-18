@@ -20,5 +20,4 @@ Route::get('/api/teamwork/project/{id}', 'TeamworkApiController@project');
 Route::get('/api/teamwork/columns/{id}', 'TeamworkApiController@boardColumn');
 
 Route::get('/api/teamwork/projekte/columns', 'TeamworkProjekteController@columns');
-
-Route::get('/api/teamwork/projekte/wichtig', 'TeamworkApiController@projekteWichtig');
+Route::get('/api/teamwork/projekte/board/{slug}', 'TeamworkProjekteController@board');
