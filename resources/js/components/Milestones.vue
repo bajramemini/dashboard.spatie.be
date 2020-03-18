@@ -5,8 +5,10 @@
             <ul class="">
                 <li v-for="milestone in milestones">
                     <div class="my-2 text-sm">
-                       <li class="bg-gray-800 text-white rounded mb-2 p-4">
-                           {{ milestone.title }} <br>
+                       <li class="bg-green-200 rounded mb-2 p-4">
+                           <span class="block font-bold">
+                               {{ milestone.title }}
+                           </span>
                            <small >
                                <strong class=" ">Deadline</strong>
                            {{ milestone.deadline }}

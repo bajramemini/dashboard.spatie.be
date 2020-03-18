@@ -5,23 +5,25 @@
             <ul class>
                 <li v-for="activity in activities">
                     <div class="my-2 text-sm">
-                        <li class="mb-4">
-                            <small class="flex">
-                                <img
+                        <li class="mb-6">
+                            <small class="flex justify-between">
+                             <div class="flex">
+                                    <img
                                     :src="activity.user_img"
                                     alt
                                     class="w-4 h-4 rounded-full mr-2 opcaity-100"
                                 />
-                                <span class="mr-2 opacity-25">{{ activity.user }}</span>
+                                <!-- <span class="mr-2 opacity-25">{{ activity.user }}</span> -->
                                 <strong
                                     class="mr-4 opacity-25"
                                 >{{ formatActivityText(activity.type, activity.activity)}}</strong>
+                             </div>
+                                  <small
+                                    class="text-xs opacity-25 text-right"
+                                >{{ activity.created_at }}</small>
                             </small>
                             <div class="flex flex-col mt-2">
                                 <span>{{ activity.description }}</span>
-                                <small
-                                    class="text-xs opacity-25 text-right"
-                                >{{ activity.created_at }}</small>
                             </div>
                         </li>
                     </div>

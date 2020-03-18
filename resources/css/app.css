@@ -14,3 +14,7 @@
 .example {
     -ms-overflow-style: none;
 }
+
+h2{
+    font-weight: bold !important;
+}

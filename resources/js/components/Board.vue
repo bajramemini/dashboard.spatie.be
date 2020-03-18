@@ -5,14 +5,15 @@
             <ul class>
                 <li v-for="task in tasks">
                     <div class="my-2 text-sm">
-                        <li class="bg-gray-200 rounded mb-2 p-4 overflow-hidden">
+                        <li class="bg-gray-200 rounded mb-2 p-4 overflow-hidden" :class="{'bg-red-200' : task.due }">
                             <strong class="hidden">{{ task.progress}}</strong>
-                            {{ task.name }}
-                            <small>{{ task.created_at }}</small>
+                            <span class="block" :class="{'font-bold' : task.due }">
+                                {{ task.name }}
+                            </span>
 
-                            <small class="flex mt-2" v-for="user in task.users">
-                                <img :src="user.avatarUrl" alt class="w-4 h-4 rounded-full mr-2" />
-                                <span class="opacity-25">{{ user.firstName }}</span>
+                            <small class="flex justify-between mt-2" v-for="user in task.users">
+                                <span class="">{{ task.due_date }}</span>
+                                <img :src="user.avatarUrl" alt class="w-4 h-4 rounded-full" />
                             </small>
                         </li>
                     </div>
