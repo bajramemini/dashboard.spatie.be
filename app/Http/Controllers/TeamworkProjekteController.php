@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
-
+use Carbon\Carbon;
 class TeamworkProjekteController
 {
     public $token;
@@ -52,7 +52,8 @@ class TeamworkProjekteController
             //return $item;
             return [
                 'id' => $item['id'],
-                'due_date' => $item['dueDate'],
+                'due_date' => Carbon::parse($item['dueDate']),
+                'due' => Carbon::parse($item['dueDate'])->isPast(),
                 'name' => $item['name'],
                 'status' => $item['status'],
                 'priority' => $item['priority'],

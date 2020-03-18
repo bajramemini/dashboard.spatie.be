@@ -4,6 +4,8 @@ import Echo from 'laravel-echo';
 import Vue from 'vue';
 
 import Activity from './components/Activity';
+import Board from './components/Board';
+import Milestones from './components/Milestones';
 import Dashboard from './components/Dashboard';
 import Calendar from './components/Calendar';
 import Statistics from './components/Statistics';
@@ -21,7 +23,9 @@ new Vue({
 
     components: {
         Activity,
+        Board,
         Dashboard,
+        Milestones,
         Calendar,
         Statistics,
         InternetConnection,
