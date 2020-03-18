@@ -6,16 +6,22 @@
                 <li v-for="activity in activities">
                     <div class="my-2 text-sm">
                         <li class="mb-4">
-                            <small class="text-gray-500 flex">
-                                <img :src="activity.user_img" alt class="w-4 h-4 rounded-full mr-2" />
-                                <span class="mr-2">{{ activity.user }}</span>
+                            <small class="flex">
+                                <img
+                                    :src="activity.user_img"
+                                    alt
+                                    class="w-4 h-4 rounded-full mr-2 opcaity-100"
+                                />
+                                <span class="mr-2 opacity-25">{{ activity.user }}</span>
                                 <strong
-                                    class="mr-4"
+                                    class="mr-4 opacity-25"
                                 >{{ formatActivityText(activity.type, activity.activity)}}</strong>
                             </small>
-                            <div class="flex flex-col">
+                            <div class="flex flex-col mt-2">
                                 <span>{{ activity.description }}</span>
-                                <small class="text-xs">{{ activity.created_at }}</small>
+                                <small
+                                    class="text-xs opacity-25 text-right"
+                                >{{ activity.created_at }}</small>
                             </div>
                         </li>
                     </div>
