@@ -13,9 +13,9 @@ return [
     |
     | Supported: "pusher", "redis", "log", "null"
     |
-    */
+     */
 
-    'default' => env('BROADCAST_DRIVER', 'pusher'),
+    'default'     => env('BROADCAST_DRIVER', 'pusher'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,32 +26,34 @@ return [
     | to broadcast events to other systems or over websockets. Samples of
     | each available type of connection are provided inside this array.
     |
-    */
+     */
 
     'connections' => [
 
         'pusher' => [
-            'driver' => 'pusher',
-            'key' => env('PUSHER_APP_KEY'),
-            'secret' => env('PUSHER_APP_SECRET'),
-            'app_id' => env('PUSHER_APP_ID'),
+            'driver'  => 'pusher',
+            'key'     => env('PUSHER_APP_KEY'),
+            'secret'  => env('PUSHER_APP_SECRET'),
+            'app_id'  => env('PUSHER_APP_ID'),
             'options' => [
-                'host' => '127.0.0.1',
-                'port' => 6001,
-                'scheme' => 'http',
+                // 'host'    => '127.0.0.1',
+                // 'port'    => 6001,
+                // 'scheme'  => 'http',
+                'cluster' => 'eu',
+                'useTLS'  => true,
             ],
         ],
 
-        'redis' => [
-            'driver' => 'redis',
+        'redis'  => [
+            'driver'     => 'redis',
             'connection' => 'default',
         ],
 
-        'log' => [
+        'log'    => [
             'driver' => 'log',
         ],
 
-        'null' => [
+        'null'   => [
             'driver' => 'null',
         ],
 

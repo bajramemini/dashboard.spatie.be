@@ -12,7 +12,6 @@ Route::group(['middleware' => AccessToken::class], function () {
 
 Route::ohDearWebhooks('/oh-dear-webhooks');
 
-
 Route::get('/api/teamwork/activity', 'TeamworkApiController@activity');
 Route::group(['middleware' => ['cache']], function () {
     Route::get('/api/teamwork/milestones', 'TeamworkApiController@milestones');
@@ -23,4 +22,8 @@ Route::group(['middleware' => ['cache']], function () {
 
     Route::get('/api/teamwork/projekte/columns', 'TeamworkProjekteController@columns');
     Route::get('/api/teamwork/projekte/board/{slug}', 'TeamworkProjekteController@board');
+});
+
+Route::get('test', function () {
+    event(new App\Events\TimeWeather\TemperatureFetched('hello world'));
 });

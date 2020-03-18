@@ -15,6 +15,7 @@ moment.updateLocale('de', {
 // necessary, hopefully we can remove this at some point.
 window.Pusher = require('pusher-js');
 
+window.Pusher.logToConsole = true;
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

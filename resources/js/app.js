@@ -41,6 +41,7 @@ new Vue({
     created() {
         let config = {
             broadcaster: 'pusher',
+            cluster: 'eu',
             key: window.dashboard.pusherKey,
             wsHost: window.location.hostname,
             wsPath: window.dashboard.clientConnectionPath,
@@ -52,6 +53,6 @@ new Vue({
             config.wsPort = 6001;
         }
 
-        //this.echo = new Echo(config);
+        this.echo = new Echo(config);
     },
 });
