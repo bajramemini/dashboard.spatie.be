@@ -1,20 +1,21 @@
 <template>
     <tile :position="position">
-        <div class="">
+        <div class>
             <h2>{{ this.board }}</h2>
-            <ul class="">
+            <ul class>
                 <li v-for="task in tasks">
                     <div class="my-2 text-sm">
-                       <li class="bg-gray-200 rounded mb-2 p-4">
-                           <small class="text-gray-500" v-for="user in task.users">
-                               <img :src="user.avatarUrl" alt="" class="w-4 h-4 rounded-full">
-                               {{ user.firstName }}
-                               </small>
-                               <strong class="hidden">{{ task.progress}} </strong>
-                           {{ task.name }} <br>
+                        <li class="bg-gray-900 rounded mb-2 p-4">
+                            <small class="text-gray-500" v-for="user in task.users">
+                                <img :src="user.avatarUrl" alt class="w-4 h-4 rounded-full" />
+                                {{ user.firstName }}
+                            </small>
+                            <strong class="hidden">{{ task.progress}}</strong>
+                            {{ task.name }}
+                            <br />
 
-                           <small>{{ task.created_at }}</small>
-                           </li>
+                            <small>{{ task.created_at }}</small>
+                        </li>
                     </div>
                 </li>
             </ul>
@@ -43,16 +44,15 @@ export default {
         };
     },
 
-    mounted(){
+    mounted() {
         this.getTasks();
     },
 
     methods: {
         getTasks() {
             axios.get('/api/teamwork/projekte/board/' + this.board).then(response => {
-                this.tasks = response.data
-                });
-
+                this.tasks = response.data;
+            });
         },
 
         getEventHandlers() {
