@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
 
 class TeamworkApiController
 {
@@ -64,9 +65,19 @@ class TeamworkApiController
      */
     public function milestones()
     {
-        $response = Http::withBasicAuth($this->token, 'X')->get($this->url . '/milestones.json');
+        $response = Http::withBasicAuth($this->token, 'X')->get($this->url . '/milestones.json?find=incomplete');
 
-        return $response->json();
+        $activity = collect($response->json()['milestones'])->map(function ($item, $key) {
+            return [
+                'id' => $item['id'],
+                'title' => $item['title'],
+                'deadline' => Carbon::parse($item['deadline'])->format('d.m.Y'),
+                'past' => Carbon::parse($item['deadline'])->isPast(),
+                'project' => $item['project-name'],
+            ];
+        });
+
+        return $activity;
     }
 
     /**
